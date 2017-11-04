@@ -5,15 +5,15 @@ var connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
 
-  // Your username
+  
   user: 'root',
 
-  // Your password---ADD IN YOUR OWN PASSWORD HERE ex. -password: 'root',
+ 
   password: '',
   database: 'bamazon_db'
 });
 
-// only positive integers for inputs
+
 function validateInput(value) {
   var integer = Number.isInteger(parseFloat(value));
   var sign = Math.sign(value);
@@ -45,13 +45,13 @@ function promptUserPurchase() {
     var item = input.item_id;
     var quantity = input.quantity;
 
-    // verify quantity
+    
     var queryStr = 'SELECT * FROM products WHERE ?';
 
     connection.query(queryStr, {item_id: item}, function(err, data) {
       if (err) throw err;
 
-      // invalid item ID, data attay will be empty
+     
       
       if (data.length === 0) {
         console.log('ERROR: Invalid Item ID. Please select a valid Item ID.');
@@ -65,7 +65,7 @@ function promptUserPurchase() {
 
           var updateQueryStr = 'UPDATE products SET stock_quantity = ' + (productData.stock_quantity - quantity) + ' WHERE item_id = ' + item;
 
-          // Update inventory
+          
           connection.query(updateQueryStr, function(err, data) {
             if (err) throw err;
 
@@ -87,9 +87,9 @@ function promptUserPurchase() {
   })
 }
 
-// retrieve current inventory from database to console
+
 function displayInventory() {
-  // console.log('___ENTER displayInventory___');
+  
 
   queryStr = 'SELECT * FROM products';
 
@@ -117,7 +117,7 @@ function displayInventory() {
 }
 
 function runBamazon() {
-  // console.log('___ENTER runBamazon___');
+  
 
   displayInventory();
 }

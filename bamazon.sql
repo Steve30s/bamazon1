@@ -1,8 +1,8 @@
--- Create a database called 'Bamazon' and switch into it for this activity --
+
 CREATE DATABASE Bamazon;
 USE Bamazon;
 
--- Create a table called 'products' which will contain the store inventory --
+
 CREATE TABLE products (
 	item_id INTEGER(11) AUTO_INCREMENT NOT NULL,
 	product_name VARCHAR(30) NOT NULL,
